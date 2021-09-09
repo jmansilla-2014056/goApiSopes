@@ -1,8 +1,8 @@
 package services
 
 import (
-	m "ApiGo/models"
-	p "ApiGo/repositories"
+	m "sopes/apigo/models"
+	p "sopes/apigo/repositories"
 )
 
 func Create(publicacion m.Publicacion) error {

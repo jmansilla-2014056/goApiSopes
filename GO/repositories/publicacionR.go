@@ -1,9 +1,9 @@
 package repositories
 
 import (
-	"ApiGo/conexion"
-	"ApiGo/models"
 	"context"
+	"sopes/apigo/conexion"
+	"sopes/apigo/models"
 )
 
 var coleccion = conexion.GetCollection("Publicaciones")

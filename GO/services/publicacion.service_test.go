@@ -1,15 +1,15 @@
 package services_test
 
 import (
-	m "ApiGo/models"
-	ps "ApiGo/services"
+	m "sopes/apigo/models"
+	ps "sopes/apigo/services"
 	"testing"
 )
 
 func TestCreate(t *testing.T) {
 
 	var publicacion = m.Publicacion{
-		Nombre:     "nombre1",
+		Nombre:     "nombrexxxx",
 		Comentario: "comentario",
 		Fecha:      "fecha",
 		Hashtags:   []string{"a", "b", "c"},

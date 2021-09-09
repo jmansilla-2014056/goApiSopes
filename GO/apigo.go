@@ -1,13 +1,13 @@
 package main
 
 import (
-	"ApiGo/models"
-	ps "ApiGo/services"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"sopes/apigo/models"
+	ps "sopes/apigo/services"
 )
 
 func main() {

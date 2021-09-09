@@ -10,7 +10,7 @@ COPY . .
 #ENV HOST=0.0.0.0:3000
 
 # Correr 'npm install' para instalar todas las dependencias que necesitemos
-# RUN go mod download
+RUN go mod download
 # Aca pueden existir muchos mas comandos "run"
 
 # Exponer el puerto 4001 al mundo

@@ -50,24 +50,35 @@ func publicar(w http.ResponseWriter, r *http.Request) {
 		//println("CLIENTE: error 3")
 	} else {
 		//firefox id 10845 / ps -ef | grep firefox
-		err := ps.Create(d)
+		if len(d.Nombre) > 0 && len(d.Fecha) > 0 && len(d.Comentario) > 0 && d.Downvotes >= 0 &&
+			d.Upvotes >= 0 {
 
-		if err != nil{
-			var x  = models.Mensaje{
-				Msg : "Ocurrio un error insertando publicacion",
+			err := ps.Create(d)
+			if err != nil{
+				var x  = models.Mensaje{
+					Api : "Go",
+					Result: false,
+				}
+				fmt.Println("El insert fracaso")
+				json.NewEncoder(w).Encode(x)
+			}else {
+				var x  = models.Mensaje{
+					Api : "Go",
+					Result: true,
+				}
+				json.NewEncoder(w).Encode(x)
+				fmt.Println(" El insert fue un exito")
 			}
-			fmt.Println("El insert fracaso")
-			json.NewEncoder(w).Encode(x)
-		}else {
-			var x  = models.Mensaje{
-				Msg : "Se inserto publicacion con exito",
+		} else{
+			var x = models.Mensaje{
+				Api:    "Go",
+				Result: false,
 			}
 			json.NewEncoder(w).Encode(x)
-			fmt.Println(" El insert fue un exito")
+			fmt.Println(" El insert fracaso")
 		}
-
 		fmt.Println("metodo publicar finalizado")
-
 	}
 }
+
 

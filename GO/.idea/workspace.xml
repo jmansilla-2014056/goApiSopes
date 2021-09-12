@@ -7,7 +7,6 @@
     <list default="true" id="bd3ca408-2f28-4c85-83a0-35fff4e2b4ce" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apigo.go" beforeDir="false" afterPath="$PROJECT_DIR$/apigo.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/mensajeM.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/mensajeM.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

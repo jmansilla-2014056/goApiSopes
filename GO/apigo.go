@@ -56,14 +56,14 @@ func publicar(w http.ResponseWriter, r *http.Request) {
 			err := ps.Create(d)
 			if err != nil{
 				var x  = models.Mensaje{
-					Api : "Go",
+					Api : "go",
 					Result: false,
 				}
 				fmt.Println("El insert fracaso")
 				json.NewEncoder(w).Encode(x)
 			}else {
 				var x  = models.Mensaje{
-					Api : "Go",
+					Api : "go",
 					Result: true,
 				}
 				json.NewEncoder(w).Encode(x)
@@ -71,7 +71,7 @@ func publicar(w http.ResponseWriter, r *http.Request) {
 			}
 		} else{
 			var x = models.Mensaje{
-				Api:    "Go",
+				Api:    "go",
 				Result: false,
 			}
 			json.NewEncoder(w).Encode(x)

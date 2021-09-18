@@ -2,9 +2,13 @@ package conexion
 
 import (
 	"context"
+	"fmt"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 	"time"
+	"database/sql"
+	_ "github.com/go-sql-driver/mysql"
+
 )
 
 var (
@@ -32,5 +36,24 @@ func GetCollection(collection string) *mongo.Collection{
 	}
 
 	return client.Database("BaseS").Collection(collection)
+
+}
+
+func GetBase() *sql.DB {
+	fmt.Println("Go MySQL")
+
+	// Open up our database connection.
+	// I've set up a database on my local machine using phpmyadmin.
+	// The database is called testDb
+	db, err := sql.Open("mysql", "admin:admin123@tcp(34.134.27.2:3306)/sopes1p1")
+
+	// if there is an error opening the connection, handle it
+	if err != nil {
+		panic(err.Error())
+	}
+
+	// defer the close till after the main function has finished
+	// executing
+	return db
 
 }

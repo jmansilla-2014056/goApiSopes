@@ -5,11 +5,20 @@ import (
 	p "sopes/apigo/repositories"
 )
 
-func Create(publicacion m.Publicacion) error {
-	err := p.Create(publicacion)
+func CreateM(publicacion m.Publicacion) error {
+	err := p.CreateMongo(publicacion)
 	if err != nil {
 		return err
 	}
 	return nil
 }
+
+func CreateS(publicacion m.Publicacion) error {
+	err := p.CreateSql(publicacion)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
 

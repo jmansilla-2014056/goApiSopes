@@ -47,14 +47,30 @@ func publicar(w http.ResponseWriter, r *http.Request) {
 	var d models.Publicacion
 
 	if json.NewDecoder(r.Body).Decode(&d) != nil {
-		//println("CLIENTE: error 3")
+		var x = models.Mensaje{
+			Api:    "go",
+			Result: false,
+		}
+		json.NewEncoder(w).Encode(x)
+		fmt.Println(" El insert fracaso")
 	} else {
 		//firefox id 10845 / ps -ef | grep firefox
 		if len(d.Nombre) > 0 && len(d.Fecha) > 0 && len(d.Comentario) > 0 && d.Downvotes >= 0 &&
 			d.Upvotes >= 0 {
 
-			err := ps.Create(d)
-			if err != nil{
+			err2 := ps.CreateS(d)
+			err := ps.CreateM(d)
+
+			if err2 != nil{
+				var x  = models.Mensaje{
+					Api : "go",
+					Result: false,
+				}
+				fmt.Println("El insert fracaso")
+				json.NewEncoder(w).Encode(x)
+			}
+
+			if err != nil || err2 != nil{
 				var x  = models.Mensaje{
 					Api : "go",
 					Result: false,
@@ -80,5 +96,3 @@ func publicar(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("metodo publicar finalizado")
 	}
 }
-
-

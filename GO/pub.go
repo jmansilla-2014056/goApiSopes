@@ -16,30 +16,18 @@
 package main
 
 import (
+	"cloud.google.com/go/pubsub"
 	"context"
 	"encoding/json"
 	"fmt"
-	"html/template"
 	"log"
 	"net/http"
 	"os"
 	"sopes/apigo/models"
 	"strconv"
-	"sync"
-
-	"cloud.google.com/go/pubsub"
 )
 
-var (
-	topic *pubsub.Topic
 
-	// Messages received by this instance.
-	messagesMu sync.Mutex
-	messages   []string
-
-	// token is used to verify push requests.
-	token = mustGetenv("GOOGLE_APPLICATION_CREDENTIALS")
-)
 
 const maxMessages = 10
 
@@ -78,7 +66,6 @@ func main() {
 		}
 	}
 
-	http.HandleFunc("/", listHandler)
 	http.HandleFunc("/pubsub/publish", publishHandler)
 	http.HandleFunc("/pubsub/push", pushHandler)
 
@@ -174,14 +161,6 @@ func pushHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func listHandler(w http.ResponseWriter, r *http.Request) {
-	messagesMu.Lock()
-	defer messagesMu.Unlock()
-
-	if err := tmpl.Execute(w, messages); err != nil {
-		log.Printf("Could not execute template: %v", err)
-	}
-}
 
 func publishHandler(w http.ResponseWriter, r *http.Request) {
 	ctx := context.Background()
@@ -197,26 +176,3 @@ func publishHandler(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Fprint(w, "Message published.")
 }
-
-var tmpl = template.Must(template.New("").Parse(`<!DOCTYPE html>
-<html>
-  <head>
-    <title>Pub/Sub</title>
-  </head>
-  <body>
-    <div>
-      <p>Last ten messages received by this instance:</p>
-      <ul>
-      {{ range . }}
-          <li>{{ . }}</li>
-      {{ end }}
-      </ul>
-    </div>
-    <form method="post" action="/pubsub/publish">
-      <textarea name="payload" placeholder="Enter message here"></textarea>
-      <input type="submit">
-    </form>
-    <p>Note: if the application is running across multiple instances, each
-      instance will have its own list of messages.</p>
-  </body>
-</html>`))

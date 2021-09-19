@@ -12,7 +12,7 @@ func main() {
 	ctx := context.Background()
 
 	// Sets your Google Cloud Platform project ID.
-	projectID := "savvy-hull-325303"
+	projectID := "publicacion"
 
 	// Creates a client.
 	client, err := pubsub.NewClient(ctx, projectID)

@@ -8,6 +8,7 @@ WORKDIR /app
 COPY . .
 
 #ENV HOST=0.0.0.0:3000
+ENV GOOGLE_APPLICATION_CREDENTIALS="./iam_key.json"
 
 # Correr 'npm install' para instalar todas las dependencias que necesitemos
 RUN go mod download

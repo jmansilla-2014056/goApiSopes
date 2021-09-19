@@ -41,6 +41,7 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+
 func publicar(w http.ResponseWriter, r *http.Request) {
 	setupResponse(&w, r)
 

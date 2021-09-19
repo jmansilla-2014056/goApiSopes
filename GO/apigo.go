@@ -2,12 +2,12 @@ package main
 
 import (
 	"cloud.google.com/go/pubsub"
+	"context"
 	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
-	"context"
 	"sopes/apigo/models"
 	ps "sopes/apigo/services"
 	"strconv"
@@ -58,11 +58,11 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func iniciarCarga(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/" {
+	if r.URL.Path != "/iniciarCarga" {
 		http.NotFound(w, r)
 		return
 	}
-	_, err := fmt.Fprint(w, "Iniciar Carga")
+	_, err := fmt.Fprint(w, "Carga Iniciada")
 	if err != nil {
 		w.WriteHeader(http.StatusInternalServerError)
 	}

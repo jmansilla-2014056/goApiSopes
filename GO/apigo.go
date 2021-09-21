@@ -10,7 +10,6 @@ import (
 	"os"
 	"sopes/apigo/models"
 	ps "sopes/apigo/services"
-	"strconv"
 	"sync"
 )
 
@@ -163,7 +162,15 @@ func pushH(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(" El push fracaso")
 	}
 
-	var y = "{\"api\": \"" + d.Api + "\",\"estado\":\"" + d.Estado + "\",\"numero\":" + strconv.Itoa(d.Numero) + "\"}"
+
+	p, err2 := json.Marshal(d)
+
+	if err2 != nil {
+		fmt.Println(err2)
+		return
+	}
+
+	var y = string(p)
 
 	msg := &pubsub.Message{
 		Data: []byte(y),
@@ -183,7 +190,7 @@ func pushH(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode(x)
 		fmt.Println(" El push fracaso")
 	} else {
-		fmt.Print("Publicado: %v", id)
+		fmt.Println("Publicado: %v", id)
 	}
 
 	json.NewEncoder(w).Encode(d)

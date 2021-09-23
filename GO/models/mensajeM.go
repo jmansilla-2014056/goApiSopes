@@ -2,7 +2,8 @@ package models
 
 type  Mensaje struct {
 	Api     string `json:"api"`
-	Result  bool `json:"result"`
+	Cosmos  bool `json:"cosmos"`
+	Sql  bool `json:"sql"`
 	}
 
 type  Mensajes []Mensaje

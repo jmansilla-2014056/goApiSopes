@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bd3ca408-2f28-4c85-83a0-35fff4e2b4ce" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apigo.go" beforeDir="false" afterPath="$PROJECT_DIR$/apigo.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/mensajeM.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/mensajeM.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/notificacionM.go" beforeDir="false" afterPath="$PROJECT_DIR$/models/notificacionM.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,11 +35,10 @@
     <setting file="file://$PROJECT_DIR$/conexion/mongo.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/services/publicacionS.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/services/publicacion.service_test.go" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/models/notificacionM.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/repositories/publicacionR.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/go.mod" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/key_cuenta.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/pubsub.go" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/models/notificacionM.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/apigo.go" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/dockerfile" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/app.yaml" root0="FORCE_HIGHLIGHTING" />
@@ -64,6 +66,23 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunManager">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="GO" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="FILE" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="GO" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <method v="2" />
+    </configuration>
     <configuration name="go test sopes/apigo/services" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="GO" />
       <working_directory value="$PROJECT_DIR$/services" />
@@ -84,6 +103,18 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>

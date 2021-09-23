@@ -73,11 +73,14 @@ func publicar(w http.ResponseWriter, r *http.Request) {
 
 	var d models.Publicacion
 
+	var x models.Mensaje
+	x.Api = "go"
+	x.Cosmos = false
+	x.Sql = false
+
 	if json.NewDecoder(r.Body).Decode(&d) != nil {
-		var x = models.Mensaje{
-			Api:    "go",
-			Result: false,
-		}
+		x.Cosmos = false
+		x.Sql = false
 		json.NewEncoder(w).Encode(x)
 		fmt.Println(" El insert fracaso")
 	} else {
@@ -89,39 +92,28 @@ func publicar(w http.ResponseWriter, r *http.Request) {
 			err := ps.CreateM(d)
 
 			if err2 != nil{
-				var x  = models.Mensaje{
-					Api : "go",
-					Result: false,
-				}
-				fmt.Println("El insert fracaso")
-				json.NewEncoder(w).Encode(x)
+				x.Sql = false
+				fmt.Println("El insert SQL fracaso")
+			}else{
+				x.Sql = true
+				fmt.Println(" El insert SQL fue un exito")
 			}
-
-			if err != nil || err2 != nil{
-				var x  = models.Mensaje{
-					Api : "go",
-					Result: false,
-				}
-				fmt.Println("El insert fracaso")
-				json.NewEncoder(w).Encode(x)
+			if err != nil {
+				x.Cosmos = false
+				fmt.Println("El insert Cosmos fracaso")
 			}else {
-				var x  = models.Mensaje{
-					Api : "go",
-					Result: true,
-				}
-				json.NewEncoder(w).Encode(x)
-				fmt.Println(" El insert fue un exito")
+				x.Cosmos = true
+				fmt.Println(" El insert Cosmos fue un exito")
 			}
 		} else{
-			var x = models.Mensaje{
-				Api:    "go",
-				Result: false,
-			}
+				x.Sql = false
+				x.Cosmos = false
 			json.NewEncoder(w).Encode(x)
 			fmt.Println(" El insert fracaso")
 		}
 		fmt.Println("metodo publicar finalizado")
 	}
+	json.NewEncoder(w).Encode(x)
 }
 
 
@@ -154,9 +146,12 @@ func pushH(w http.ResponseWriter, r *http.Request) {
 
 	if json.NewDecoder(r.Body).Decode(&d) != nil {
 		var x = models.Notificacion{
-			Api:    "go",
-			Estado: "Error",
-			Numero: 0,
+			Go_cosmos:    0,
+			Go_sql: 0,
+			Python_cosmos: 0,
+			Python_sql: 0,
+			Rust_cosmos: 0,
+			Rust_sql: 0,
 		}
 		json.NewEncoder(w).Encode(x)
 		fmt.Println(" El push fracaso")
@@ -183,9 +178,12 @@ func pushH(w http.ResponseWriter, r *http.Request) {
 		fmt.Print("error")
 		fmt.Print(err)
 		var x = models.Notificacion{
-			Api:    "go",
-			Estado: "Error",
-			Numero: 0,
+			Go_cosmos:    0,
+			Go_sql: 0,
+			Python_cosmos: 0,
+			Python_sql: 0,
+			Rust_cosmos: 0,
+			Rust_sql: 0,
 		}
 		json.NewEncoder(w).Encode(x)
 		fmt.Println(" El push fracaso")
